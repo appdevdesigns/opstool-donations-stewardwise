@@ -1,0 +1,35 @@
+{
+    "name": "opstool-donations-stewardwise",
+    "version": "0.0.0",
+    "description": "(plugin) An OpsPortal tool to connect our donations to our legacy Stewardwise system",
+    "main": "module.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "make test",
+        "postinstall": "node setup/setup.js",
+        "postupdate": "node setup/setup.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/appdevdesigns/opstool-donations-stewardwise.git"
+    },
+    "author": "Johnny Hausman",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/appdevdesigns/opstool-donations-stewardwise/issues"
+    },
+    "homepage": "https://github.com/appdevdesigns/opstool-donations-stewardwise#readme",
+    "dependencies": {
+        "ad-utils": "appdevdesigns/ad-utils"
+    },
+    "devDependencies": {
+        "barrels": "^1.5.0",
+        "chai": "^3.3.0",
+        "mocha": "^2.3.3",
+        "mocha-phantomjs": "^4.0.1",
+        "phantomjs": "^1.9.7-15",
+        "supertest": "^1.1.0"
+    }
+}
