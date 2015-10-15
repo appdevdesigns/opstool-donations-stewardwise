@@ -17,6 +17,9 @@ module.exports = {
 
    'opstool-donations-stewardwise/DonorController': {
        find: [ 'fixMe' ]  // This is a REALLY bad idea!  Fix this for production!
+   },
+    'opstool-donations-stewardwise/DonationsController': {
+       find: [] //[ 'fixMe' ]  // This is a REALLY bad idea!  Fix this for production!
    }
 
 
