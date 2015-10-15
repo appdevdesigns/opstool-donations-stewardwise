@@ -15,12 +15,9 @@
 
 module.exports = {
 
-//    'opstool-donations-stewardwise/YourController': {
-//        method: ['isAuthenticatedService'],
-//        auth: [],
-//        sync: serviceStack,
-//        logout:true
-//    }
+   'opstool-donations-stewardwise/DonorController': {
+       find: [ 'fixMe' ]  // This is a REALLY bad idea!  Fix this for production!
+   }
 
 
 };
