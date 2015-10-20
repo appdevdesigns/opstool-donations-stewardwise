@@ -36,12 +36,12 @@ module.exports = {
 	    		} else {
 
 	    			fixtureData = JSON.parse(data);
-	    			res.send(fixtureData);
+	    			res.json(fixtureData);
 	    		}
 	    	})
 
 	    } else {
-	    	res.send(fixtureData);
+	    	res.json(fixtureData);
 	    }
 
     }
