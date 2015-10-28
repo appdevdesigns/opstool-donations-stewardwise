@@ -11,12 +11,12 @@
  * http://sailsjs.org/#documentation
  */
 
-// var serviceStack = ADCore.policy.serviceStack([ 'policy1', 'policy2']);
+var serviceStack = ADCore.policy.serviceStack();
 
 module.exports = {
 
    'opstool-donations-stewardwise/DonorController': {
-       find: [ 'fixMe' ]  // This is a REALLY bad idea!  Fix this for production!
+       find: serviceStack.concat([ 'staffInfo', 'fixMe' ])
    },
     'opstool-donations-stewardwise/DonationsController': {
        find: [] //[ 'fixMe' ]  // This is a REALLY bad idea!  Fix this for production!
