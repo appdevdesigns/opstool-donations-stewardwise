@@ -23,8 +23,22 @@ module.exports = {
         rest: true
     },
 
-
-    find:function(req,res) {
+    
+    find: function(req, res) {
+        var donorID = req.param('donor_id') || 0;
+        var nssrenID = req.stewardwise.nssren.nssren_id;
+        
+        LNSSDonItem.byDonor(nssrenID, donorID)
+        .fail(function(err) {
+            res.AD.error(err);
+        })
+        .then(function(list) {
+            res.AD.success(list);
+        });
+    
+    },
+    
+    findFixtures:function(req,res) {
 
     	if (fixtureData == null) {
 

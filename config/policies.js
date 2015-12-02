@@ -15,12 +15,13 @@ var serviceStack = ADCore.policy.serviceStack();
 
 module.exports = {
 
-   'opstool-donations-stewardwise/DonorController': {
-       find: serviceStack.concat([ 'staffInfo', 'fixMe' ])
-   },
+    'opstool-donations-stewardwise/DonorController': {
+        find: serviceStack.concat([ 'staffInfo', 'fixThis' ])
+    },
+   
     'opstool-donations-stewardwise/DonationsController': {
-       find: [] //[ 'fixMe' ]  // This is a REALLY bad idea!  Fix this for production!
-   }
+        find: serviceStack.concat([ 'staffInfo', 'fixThis' ])
+    }
 
 
 };
