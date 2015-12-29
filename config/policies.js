@@ -16,11 +16,11 @@ var serviceStack = ADCore.policy.serviceStack();
 module.exports = {
 
     'opstool-donations-stewardwise/DonorController': {
-        find: serviceStack.concat([ 'staffInfo', 'fixThis' ])
+        '*': serviceStack.concat([ 'staffInfo', 'fixThis' ])
     },
    
     'opstool-donations-stewardwise/DonationsController': {
-        find: serviceStack.concat([ 'staffInfo', 'fixThis' ])
+        '*': serviceStack.concat([ 'staffInfo', 'fixThis' ])
     }
 
 
