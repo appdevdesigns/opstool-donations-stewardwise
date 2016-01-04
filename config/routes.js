@@ -23,7 +23,13 @@ module.exports = {
 
 
   'get /opstool-donations-stewardwise/donations' : 
-    'opstool-donations-stewardwise/DonationsController.find'
+    'opstool-donations-stewardwise/DonationsController.find',
+  
+  'post /opstool-donations-stewardwise/donations' : 
+    'opstool-donations-stewardwise/DonationsController.save',
+  
+  'post /opstool-donations-stewardwise/donations/:donor_id' : 
+    'opstool-donations-stewardwise/DonationsController.save'
 
 };
 
