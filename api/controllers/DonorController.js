@@ -162,17 +162,26 @@ module.exports = {
                 data[field] = value;
             }
         }
+        if (typeof data.donors_type != 'undefined') {
+            // Reverse map the donor type back into integer
+            for (var t in LNSSDonors.DonorTypes) {
+                if (data.donors_type == LNSSDonors.DonorTypes[t]) {
+                    data.donors_type = t;
+                    break;
+                }
+            }
+        }
         
         var donorID = null;
         var isNewEntry = false;
         if (data.donor_id) {
             donorID = data.donor_id;
-            delete data.donor_id;
+            //delete data.donor_id;
         } else {
             isNewEntry = true;
         }
         
-        var dfd;
+        var dfd; // Waterline promise
         if (isNewEntry) {
             // Create new entry
             dfd = LNSSDonors.create(data);
@@ -186,22 +195,17 @@ module.exports = {
         }
         else {
             // Update existing donor entry
-            dfd = LNSSDonors.update(data).where({ donor_id: donorID });
+            dfd = LNSSDonors.update({ donor_id: donorID }, data);
         }
-        
-        dfd.fail(function(err) {
-            res.AD.error(err);
-        });
         
         dfd.then(function(result) {
             res.AD.success(result);
             
             // Part 2: Donor relation entry
             var nssrenID = req.stewardwise.nssren.nssren_id;
-            var donorID = result.donor_id;
+            var donorID = result[0].donor_id;
             // Look for existing relation
-            LNSSDonorRelations.find()
-            .where({ 
+            LNSSDonorRelations.find({ 
                 donor_id: donorID,
                 nssren_id: nssrenID
             })
@@ -211,13 +215,13 @@ module.exports = {
                         // Relation exists but is not active.
                         // Set as active now.
                         LNSSDonorRelations.update({
-                            donor_isActive: 1
-                        })
-                        .where({
                             donorrelation_id: list[0].donorrelation_id
+                        }, {
+                            donor_isActive: 1
                         })
                         .then(function() {
                             // do nothing else
+                            return null;
                         });
                     }
                 }
@@ -231,10 +235,16 @@ module.exports = {
                     })
                     .then(function() {
                         // do nothing else
+                        return null;
                     });
                 }
+                return null;
             });
-            
+            return null;
+        })
+        .catch(function(err) {
+            res.AD.error(err);
+            return null;
         });
         
     }
